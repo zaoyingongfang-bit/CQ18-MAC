@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "造音工坊专业声卡调试工具 - macOS 版",
   "main": "main.js",
+  "author": "造音工坊",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder -m"
@@ -14,12 +15,27 @@
       "output": "dist"
     },
     "publish": null,
+    "afterPack": "./afterPack.js",
     "mac": {
       "category": "public.app-category.utilities",
-      "target": ["dmg", "zip"],
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["arm64", "x64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["arm64", "x64"]
+        }
+      ],
       "identity": null,
+      "signIgnore": [
+        ".*"
+      ],
       "hardenedRuntime": false,
-      "gatekeeperAssess": false
+      "gatekeeperAssess": false,
+      "entitlements": null,
+      "entitlementsInherit": null
     },
     "files": [
       "**/*",

@@ -4,3 +4,6 @@ dist/
 .DS_Store
 .env
 package-lock.json
+*.dmg
+*.zip
+*.app
