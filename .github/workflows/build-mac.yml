@@ -1,0 +1,54 @@
+name: Build macOS App
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout代码
+        uses: actions/checkout@v4
+      
+      - name: 设置Node.js环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 安装依赖
+        run: npm install
+      
+      - name: 构建macOS应用
+        run: npm run build
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+      
+      - name: 列出构建产物
+        run: ls -lah dist/
+      
+      - name: 上传DMG安装包
+        uses: actions/upload-artifact@v4
+        with:
+          name: CQ18-MAC-dmg
+          path: dist/*.dmg
+          if-no-files-found: warn
+      
+      - name: 上传ZIP压缩包
+        uses: actions/upload-artifact@v4
+        with:
+          name: CQ18-MAC-zip
+          path: dist/*.zip
+          if-no-files-found: warn
+      
+      - name: 上传完整dist目录
+        uses: actions/upload-artifact@v4
+        with:
+          name: CQ18-MAC-dist-full
+          path: dist/
+          retention-days: 30

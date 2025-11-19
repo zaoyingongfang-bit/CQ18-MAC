@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="造音工坊声卡一键调试工具">
+  <title>造音工坊 - 声卡一键调试 (macOS)</title>
+  <link rel="stylesheet" href="assets/style.css?v=20250105m">
+  <link rel="stylesheet" href="assets/auth.css?v=20250105m">
+</head>
+<body ondragstart="return false;" onselectstart="return false;" oncontextmenu="return false;">
+  <div class="bg-animation"></div>
+  <div class="container">
+    <button id="theme-toggle" class="theme-toggle">
+      <span>☀️</span>
+      <span>浅色模式</span>
+    </button>
+    <button id="settings-btn" class="settings-btn" title="设置"><span>⚙️</span></button>
+    <div id="settings-menu" class="settings-menu">
+      <div class="settings-menu-item" id="export-auth"><span>📥</span><span>导出授权文件</span></div>
+      <div class="settings-menu-item" id="view-machine-code"><span>🔑</span><span>查看机器码</span></div>
+    </div>
+    <header class="header">
+      <h1>AllenHeath CQ18T调音台教程工具箱</h1>
+      <p class="subtitle">造音工坊出品</p>
+    </header>
+    <main class="main-content">
+      <section class="device-section"></section>
+      <section class="controls-section"></section>
+    </main>
+    <footer class="footer"><div class="footer-content"></div></footer>
+  </div>
+  <script src="electron-adapter.js"></script>
+  <script src="assets/devices.js?v=20250105m"></script>
+  <script src="assets/auth.js?v=20250105m"></script>
+  <script src="assets/app.js?v=20250105m"></script>
+</body>
+</html>
